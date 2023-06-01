@@ -1,11 +1,12 @@
-SOURCE_DIR=.
-RESCOMP = ../rescomp/workspace/rescomp/target/rescomp.jar
+DDK?=../dclib/
+RESCOMP ?= ../rescomp/workspace/rescomp/target/rescomp.jar
+SOURCE_DIR=src
 BUILD_DIR = bin
-CFG=../dclib/cfg/durango16k.cfg
-DCLIB=../dclib/bin
-DCINC=../dclib/inc
+CFG=$(DDK)/cfg/durango16k.cfg
+DCLIB=$(DDK)/bin
+DCINC=$(DDK)/inc
 
-all: telesketch.bin
+all: telesketch.dux
 
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
@@ -18,7 +19,9 @@ $(BUILD_DIR)/main.o: $(BUILD_DIR)/main.s $(BUILD_DIR)
 
 
 telesketch.bin: $(BUILD_DIR) $(BUILD_DIR)/main.o
-	ld65 -C $(CFG) $(BUILD_DIR)/main.o $(DCLIB)/geometrics.lib $(DCLIB)/durango.lib $(DCLIB)/system.lib $(DCLIB)/psv.lib -o telesketch.bin	
+	ld65 -C $(CFG) $(BUILD_DIR)/main.o $(DCLIB)/durango.lib -o telesketch.bin	
 
+telesketch.dux: telesketch.bin
+	java -jar ${RESCOMP} -m SIGNER -n Telesketch -t Telesketch -d "Draw Lines On durango" -i telesketch.bin -o telesketch.dux
 clean:
-	rm -Rf $(BUILD_DIR) telesketch.bin
+	rm -Rf $(BUILD_DIR) telesketch.bin telesketch.dux

@@ -1,6 +1,5 @@
-#include <system.h>
-#include <geometrics.h>
-#include <psv.h>
+#include <durango.h>
+
 
 void move(void);
 
