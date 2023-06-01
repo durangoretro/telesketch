@@ -1,4 +1,4 @@
-# telesketch
+# Telesketch
 
 ![image](https://github.com/durangoretro/telesketch/assets/6067824/44e6d833-5df7-4d67-ad2e-ece6b989e215)
 
@@ -11,7 +11,7 @@ To compile this Game, You will need the next Dependencies:
 
 * [CC65 Suite](https://cc65.github.io)
 * [DurangoLib(v 0.1.0 or later)](https://durangoretro.com/https://durangoretro.com/tools/durangolib/)
-
+* [Rescomp Java Utility](https://github.com/durangoretro/rescomp)
 After download or install the dependencies, use the next commands to build the ROM:
 
 ```bash

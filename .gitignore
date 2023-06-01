@@ -1,4 +1,5 @@
 bin/
-telesketch.bin
+*.bin
+*.dux
 *.temp
 
